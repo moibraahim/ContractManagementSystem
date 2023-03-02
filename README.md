@@ -74,6 +74,48 @@ To deploy the project to AWS, you can use the following command, note: you have 
 npm run deploy
 ```
 
+## Testing Endpoints with Postman
+This guide will provide instructions on how to test the endpoints of the application using Postman. Postman is a popular tool used for testing RESTful APIs.
+
+Prerequisites
+-Download and install Postman.
+-In project directory type [ npm start] 
+
+
+
+![image](https://user-images.githubusercontent.com/60974619/222350847-d44e846c-9800-4aee-9f6a-75e94e75362e.png)
+
+
+![image](https://user-images.githubusercontent.com/60974619/222350964-1258dfce-994c-4ec3-802e-6cd3d207f887.png)
+
+
+![image](https://user-images.githubusercontent.com/60974619/222351431-cf0729ea-90ed-4cc3-817a-a014ad9f7dce.png)
+
+![image](https://user-images.githubusercontent.com/60974619/222351584-1768f03f-8202-48bb-8261-4bdba4bad9f0.png)
+
+
+![image](https://user-images.githubusercontent.com/60974619/222351809-d4eb7a17-2513-4b87-a20d-3a49b6843c73.png)
+
+
+![image](https://user-images.githubusercontent.com/60974619/222352221-17b6ba5d-9416-47db-a640-1d620c546898.png)
+
+
+![image](https://user-images.githubusercontent.com/60974619/222352436-096e3439-afa8-4903-8e7d-cd2ac3cb193b.png)
+
+![image](https://user-images.githubusercontent.com/60974619/222352607-f311afcc-a9b6-4304-a339-4fd563b98819.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## ---------------------------------------------------------------------------
 # Project Documentation 
 ## formatJsonResponse.ts
