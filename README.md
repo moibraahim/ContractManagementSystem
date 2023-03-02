@@ -24,6 +24,11 @@ git clone https://github.com/moibraahim/ContractManagementSystem.git
 
 ```cmd
 cd contract-management-system
+
+npm install serverless-offline --save-dev
+
+npm install -g serverless
+
 npm install
 
 sls dynamodb install
