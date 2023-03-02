@@ -79,6 +79,7 @@ This guide will provide instructions on how to test the endpoints of the applica
 
 Prerequisites
 -Download and install Postman.
+
 -In project directory type [ npm start] 
 
 
