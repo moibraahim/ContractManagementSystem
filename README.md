@@ -45,7 +45,6 @@ sls dynamodb install
 
 
 
-Note that you may want to change the `DB_TABLE` variable to a different name that is more appropriate for your use case.
 
 ## Usage
 
