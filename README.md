@@ -48,7 +48,7 @@ sls dynamodb install
 
 ## Usage
 
-To run the project locally, you can use the following command, this will start a scrip to run serverless and dynamodb 
+To run the project locally, you can use the following command, this will start a script to run serverless and dynamodb 
 
 ```cmd
 npm start
