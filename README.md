@@ -78,6 +78,7 @@ npm run deploy
 This guide will provide instructions on how to test the endpoints of the application using Postman. Postman is a popular tool used for testing RESTful APIs.
 
 Prerequisites
+
 -Download and install Postman.
 
 -In project directory type [ npm start] 
