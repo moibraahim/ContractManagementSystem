@@ -1,0 +1,149 @@
+service: aws-serverless-api
+
+plugins:
+  - serverless-offline
+  - serverless-webpack
+  - serverless-dynamodb-local
+
+custom:
+  webpack:
+    webpackConfig: ./webpack.config.js
+    includeModules: true
+  serverless-offline:
+    httpPort: 3003
+  dynamodb:
+    start:
+      port: 5000
+      inMemory: true
+      migrate: true
+    stages:
+      - dev
+
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: ${opt:stage, 'dev'}
+  region: ${opt:region, 'us-east-1'}
+  environment:
+    AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
+    POSTS_TABLE: Posts-${self:provider.stage}
+    USERS_TABLE: Users-${self:provider.stage} # new environment variable
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:DescribeTable
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:DeleteItem
+      Resource: "arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.POSTS_TABLE}"
+
+functions:
+  createContract:
+    handler: src/functions/createContract.handler
+    events:
+      - http:
+          method: post
+          path: create-contract
+          cors: true
+
+  createUser:
+    handler: src/functions/createUser.handler
+    events:
+      - http:
+          method: post
+          path: create-user
+          cors: true
+    environment:
+      USERS_TABLE: ${self:provider.environment.USERS_TABLE} # add environment variable
+
+
+  
+  getAllContract:
+    handler: src/functions/getAllContract.handler
+    events:
+      - http:
+          method: get
+          path: get-contract
+          cors: true
+
+
+
+  getAllUser:
+    handler: src/functions/getAllUser.handler
+    events:
+      - http:
+          method: get
+          path: get-users # modify path to avoid conflicts
+          cors: true
+    environment:
+      USERS_TABLE: ${self:provider.environment.USERS_TABLE} # add environment variable
+
+
+
+  getContract:
+    handler: src/functions/getContract.handler
+    events:
+      - http:
+          method: get
+          path: get-contract/{contractId}
+          cors: true
+
+  getUser:
+    handler: src/functions/getUser.handler
+    events:
+      - http:
+          method: get
+          path: get-user/{userId}
+          cors: true
+    environment:
+      USERS_TABLE: ${self:provider.environment.USERS_TABLE} # add environment variable
+
+
+
+  updateContract:
+    handler: src/functions/updateContract.handler
+    events:
+      - http:
+          method: put
+          path: update-contract/{contractId}
+          cors: true
+  deleteContract:
+    handler: src/functions/deleteContract.handler
+    events:
+      - http:
+          method: delete
+          path: delete-contract/{contractId}
+          cors: true
+
+resources:
+  Resources:
+    PostsListTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:provider.environment.POSTS_TABLE}
+        AttributeDefinitions:
+          - AttributeName: contractId
+            AttributeType: S
+        KeySchema:
+          - AttributeName: contractId
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+
+    UsersListTable: # new table definition
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:provider.environment.USERS_TABLE}
+        AttributeDefinitions:
+          - AttributeName: userId
+            AttributeType: S
+        KeySchema:
+          - AttributeName: userId
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
