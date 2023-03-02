@@ -4,6 +4,12 @@
 
 This is a serverless project that allows for the management of contracts in a TypeScript environment. It uses the Serverless Framework to create a REST API that interacts with a DynamoDB database. The project is designed to be run offline using the Serverless Offline plugin.
 
+
+## Project architecture 
+
+![Architicture](https://user-images.githubusercontent.com/60974619/222353859-0cfd8fa7-6720-482c-82dc-e0e616deb77f.png)
+
+
 ## Prerequisites
 
 Before you can run this project, you must have the following software installed:
