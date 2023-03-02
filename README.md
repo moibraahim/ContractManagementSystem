@@ -1,4 +1,4 @@
-# Serverless Offline TypeScript Contract Management System
+# Serverless TypeScript Contract Management System
 
 ## Project Overview
 
