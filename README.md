@@ -25,20 +25,11 @@ git clone https://github.com/moibraahim/ContractManagementSystem.git
 ```cmd
 cd contract-management-system
 npm install
+
+sls dynamodb install
+
 ```
 
-
-## Configuration
-
-The project comes with default configuration settings that should work out-of-the-box for local development. However, you may want to modify these settings for production deployment. Here's how to do it:
-
-1. Create a `.env` file in the root directory of the project.
-2. Add the following variables to the file:
-```cmd
-NODE_ENV=development
-DB_TABLE=contracts
-AWS_REGION=us-east-1
-```
 
 
 Note that you may want to change the `DB_TABLE` variable to a different name that is more appropriate for your use case.
